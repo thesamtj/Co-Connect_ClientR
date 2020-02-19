@@ -120,7 +120,7 @@ class Signup extends Component {
             <TextField
               id="handle"
               name="handle"
-              type="type"
+              type="text"
               label="Handle"
               className={classes.TextField}
               helperText={errors.handle}
