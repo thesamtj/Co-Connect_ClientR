@@ -3,7 +3,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import Appicon from "../images/icon.png";
 import Typography from "@material-ui/core/Typography";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 // MUI stuff
@@ -14,7 +13,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Redux stuff
 import { connect } from "react-redux";
-import { loginUser } from "../redux/actions/userAction";
+import { userLogin } from "../redux/actions/userAction";
 
 const styles = theme => ({
   ...theme.general
@@ -42,7 +41,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.loginUser(userData, this.props.history);
+    this.props.userLogin(userData, this.props.history);
   };
 
   handleChange = event => {
@@ -123,7 +122,7 @@ class Login extends Component {
 
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
-  loginUser: PropTypes.func.isRequired,
+  userLogin: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
@@ -134,7 +133,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionstoProps = {
-  loginUser
+  userLogin
 };
 
 export default connect(
