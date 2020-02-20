@@ -15,7 +15,7 @@ export default {
   },
 
   // the object to be spread
-  spreadThis: {
+  general: {
     typography: {
       useNextVariants: true
     },
