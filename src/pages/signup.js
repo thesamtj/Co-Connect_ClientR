@@ -13,7 +13,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = (theme) => ({
-  ...theme
+    ...theme.spreadThis
 });
 
 class Signup extends Component {
@@ -165,4 +165,4 @@ Signup.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(Signup);
