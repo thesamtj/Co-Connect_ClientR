@@ -1,4 +1,4 @@
-import { SET_USER, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, SET_AUTHENTICATED } from "../types";
+import { SET_USER, SET_ERRORS, LOADING_UI, CLEAR_ERRORS, SET_AUTHENTICATED, LOADING_USER } from "../types";
 import axios from "axios";
 
 export const userLogin = (userData, history) => dispatch => {
@@ -40,10 +40,11 @@ export const signupUser = (newUserData, history) => dispatch => {
 export const logoutUser = () => (dispatch) => {
     localStorage.removeItem('FBIdToken');
     delete axios.defaults.headers.common['Authorization'];
-    dispatch({ types: SET_AUTHENTICATED });
+    dispatch({ type: SET_AUTHENTICATED });
 }
 
-export const getUserData = () => dispatch => {
+export const getUserData = () => (dispatch) => {
+  dispatch({ type: LOADING_USER });
   axios
     .get("/user")
     .then(res => {
