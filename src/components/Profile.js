@@ -10,7 +10,9 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
-
+import CalendarToday from '@material-ui/icons/CalendarToday';
+import EditIcon from '@material-ui/icons/Edit';
+import LinkIcon from '@material-ui/icons/Link';
 // Redux
 import { connect } from "react-redux";
 
@@ -122,10 +124,7 @@ class Profile extends Component {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
-            <MyButton tip="Logout" onClick={this.handleLogout}>
-              <KeyboardReturn color="primary" />
-            </MyButton>
-            <EditDetails />
+            
           </div>
         </Paper>
       ) : (
