@@ -6,7 +6,7 @@ export const userLogin = (userData, history) => dispatch => {
   axios
     .post("/login", userData)
     .then(res => {
-      setAuthorizationHeader(res.data.token);
+      setAuthorizationHeader(res.data.idToken);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
       history.push("/");
@@ -24,7 +24,7 @@ export const signupUser = (newUserData, history) => dispatch => {
   axios
     .post("/signup", newUserData)
     .then(res => {
-      setAuthorizationHeader(res.data.token);
+      setAuthorizationHeader(res.data.idToken);
       dispatch(getUserData());
       dispatch({ type: CLEAR_ERRORS });
       history.push("/");
@@ -56,8 +56,17 @@ export const getUserData = () => (dispatch) => {
     .catch(err => console.log(err));
 };
 
-const setAuthorizationHeader = token => {
+export const uploadImage = (formData) => (dispatch) => {
+  dispatch({ type: LOADING_USER });
+  axios.post('/user/image', formData)
+    .then(() => {
+      dispatch(getUserData());
+    })
+    .catch(err => console.log(err));
+}
+
+const setAuthorizationHeader = (token) => {
   const FBIdToken = `Bearer ${token}`;
   localStorage.setItem("FBIdToken", FBIdToken);
-  axios.defaults.headers.common["Authorization"] = FBIdToken;
+  axios.defaults.headers.common['Authorization'] = FBIdToken;
 };
