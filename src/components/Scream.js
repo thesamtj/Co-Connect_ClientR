@@ -40,6 +40,7 @@ class Scream extends Component {
             }
         } = this.props;
         
+        
         return (
             <Card className={classes.card}>
                 <CardMedia 

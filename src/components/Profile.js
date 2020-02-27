@@ -17,7 +17,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import LinkIcon from "@material-ui/icons/Link";
 // Redux
 import { connect } from "react-redux";
-import { logoutUser, uploadImage } from "../../redux/actions/userActions";
+import { logoutUser, uploadImage } from "../redux/actions/userAction";
 
 const styles = theme => ({
   profile: {
@@ -79,10 +79,11 @@ class Profile extends Component {
   };
 
   render() {
+    // console.log(user);
     const {
       classes,
       user: {
-        credentials: { bio, createdAt, imageUrl, handle, website, location },
+        credentials: { handle, bio, imageUrl, createdAt, location, website },
         loading,
         authenticated
       }
@@ -184,7 +185,7 @@ Profile.propTypes = {
   user: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   user: state.user
 });
 
