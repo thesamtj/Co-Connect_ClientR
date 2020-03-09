@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
+import EditDetails from './EditDetails';
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 // MUI stuff
@@ -15,6 +16,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import EditIcon from "@material-ui/icons/Edit";
 import LinkIcon from "@material-ui/icons/Link";
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn';
 // Redux
 import { connect } from "react-redux";
 import { logoutUser, uploadImage } from "../redux/actions/userAction";
@@ -77,13 +79,15 @@ class Profile extends Component {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
   };
-
+  handleLogout = () => {
+    this.props.logoutUser();
+  }
   render() {
     // console.log(user);
     const {
       classes,
       user: {
-        credentials: { handle, bio, imageUrl, createdAt, location, website },
+        credentials: { handle, createdAt, imageUrl, bio, website, location },
         loading,
         authenticated
       }
@@ -143,6 +147,11 @@ class Profile extends Component {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
+            <Tooltip title="Logout" placement="top">
+                <IconButton onClick={this.handleLogout}>
+                  <KeyboardReturn color="primary"/>
+                </IconButton>
+            </Tooltip>
           </div>
         </Paper>
       ) : (
