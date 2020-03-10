@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
+import MyButton from "../util/MyButton";
 // Redux stuff
 import { connect } from "react-redux";
 import { editUserDetails } from "../redux/actions/userAction";
@@ -11,8 +12,6 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
 
 //Icons
 import EditIcon from "@material-ui/icons/Edit";
@@ -40,7 +39,6 @@ class EditDetails extends Component {
     });
   };
 
-
   handleOpen = () => {
     this.setState({ open: true });
     this.mapUserDetailsToState(this.props.credentials);
@@ -55,28 +53,30 @@ class EditDetails extends Component {
     mapUserDetailsToState(credentials);
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
   handleSubmit = () => {
     const userDetails = {
-        bio: this.state.bio,
-        website: this.state.website,
-        location: this.state.location
-      };
-      this.props.editUserDetails(userDetails);
-      this.handleClose();
+      bio: this.state.bio,
+      website: this.state.website,
+      location: this.state.location
+    };
+    this.props.editUserDetails(userDetails);
+    this.handleClose();
   };
 
   render() {
     return (
       <Fragment>
-        <Tooltip title="Edit details" placement="top">
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <EditIcon color="primary" />
-          </IconButton>
-        </Tooltip>
+        <MyButton
+          tip="Edit details"
+          onClick={this.handleOpen}
+          btnClassName={classes.button}
+        >
+          <EditIcon color="primary" />
+        </MyButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
