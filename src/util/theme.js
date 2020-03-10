@@ -90,12 +90,13 @@ export default {
       '&:hover': {
         cursor: 'pointer'
       }
-    }
-  },
-  buttons: {
-    textAlign: 'center',
-    '& a': {
-      margin: '20px 10px'
+    },
+    buttons: {
+      textAlign: 'center',
+      '& a': {
+        margin: '20px 10px'
+      }
     }
   }
+  
 };

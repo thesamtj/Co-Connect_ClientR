@@ -19,7 +19,7 @@ const styles = (theme) => ({
     ...theme.general
 });
 
-class Signup extends Component {
+class signup extends Component {
   constructor() {
     super();
     this.state = {
@@ -142,7 +142,7 @@ class Signup extends Component {
               className={classes.button}
               disabled={loading}
             >
-             Signup 
+             s
               {loading && (
                 <CircularProgress 
                   size={30} 
@@ -162,7 +162,7 @@ class Signup extends Component {
   }
 }
 
-Signup.propTypes = {
+signup.propTypes = {
   classes: PropTypes.object.isRequired,
   signupUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
@@ -177,4 +177,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { signupUser }
-)(withStyles(styles)(Signup));
+)(withStyles(styles)(signup));
