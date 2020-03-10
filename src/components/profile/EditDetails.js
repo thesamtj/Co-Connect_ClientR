@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import MyButton from "../../util/MyButton";
 // Redux stuff
 import { connect } from "react-redux";
-import { editUserDetails } from "../../redux/actions/userAction";
+import { editUserDetails } from "../../redux/actions/userActions";
 // MUI stuff
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -19,7 +19,7 @@ import EditIcon from "@material-ui/icons/Edit";
 const styles = theme => ({
   ...theme.general,
   button: {
-    float: right
+    float: 'right'
   }
 });
 
@@ -50,7 +50,7 @@ class EditDetails extends Component {
 
   componentDidMount() {
     const { credentials } = this.props;
-    mapUserDetailsToState(credentials);
+    this.mapUserDetailsToState(credentials);
   }
 
   handleChange = event => {
@@ -68,6 +68,7 @@ class EditDetails extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <Fragment>
         <MyButton

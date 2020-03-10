@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
-import Appicon from "../images/icon.png";
-import Typography from "@material-ui/core/Typography";
+import AppIcon from "../images/icon.png";
 import { Link } from "react-router-dom";
 
 // MUI stuff
@@ -10,10 +9,11 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Typography from "@material-ui/core/Typography";
 
 // Redux stuff
 import { connect } from "react-redux";
-import { userLogin } from "../redux/actions/userAction";
+import { loginUser } from "../redux/actions/userActions";
 
 const styles = theme => ({
   ...theme.general
@@ -49,7 +49,7 @@ class login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-    this.props.userLogin(userData, this.props.history);
+    this.props.loginUser(userData, this.props.history);
   };
 
   handleChange = event => {
@@ -66,7 +66,7 @@ class login extends Component {
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <img src={Appicon} alt="mypix" className={classes.image} />
+          <img src={AppIcon} alt="mypix" className={classes.image} />
           <Typography
             variant="h2"
             className={classes.pageTitle}
@@ -130,7 +130,7 @@ class login extends Component {
 
 login.propTypes = {
   classes: PropTypes.object.isRequired,
-  userLogin: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   UI: PropTypes.object.isRequired
 };
@@ -141,7 +141,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionstoProps = {
-  userLogin
+  loginUser
 };
 
 export default connect(
