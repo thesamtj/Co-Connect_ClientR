@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 // Icons
 import AddIcon from '@material-ui/core/Add';
 import HomeIcon from '@material-ui/core/Home';
-import Notification from '@material-ui/core/Notifications';
+import Notifications from '@material-ui/core/Notifications';
 
 class Navbar extends Component {
     render() {
@@ -54,4 +54,4 @@ Navbar.propTypes = {
     authenticated: state.user.authenticated
   });
 
-export default connect(mapStateToProps)Navbar 
+export default connect(mapStateToProps)(Navbar); 
