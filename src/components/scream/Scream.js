@@ -49,7 +49,7 @@ class Scream extends Component {
       },
       user: {
         authenticated,
-        credentials: { handle }
+        userCredentials: { handle }
       }
     } = this.props;
 

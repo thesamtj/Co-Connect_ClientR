@@ -22,7 +22,13 @@ import { connect } from 'react-redux';
 import { logoutUser, uploadImage } from '../../redux/actions/userActions';
 
 const styles = (theme) => ({
-  ...theme.profile
+  ...theme.profile,
+  buttons: {
+    textAlign: 'center',
+    '& a': {
+      margin: '20px 10px'
+    }
+  }
 });
 
 class Profile extends Component {
@@ -43,7 +49,7 @@ class Profile extends Component {
     const {
       classes,
       user: {
-        credentials: { handle, createdAt, imageUrl, bio, website, location },
+        userCredentials: { handle, createdAt, imageUrl, bio, website, location },
         loading,
         authenticated
       }

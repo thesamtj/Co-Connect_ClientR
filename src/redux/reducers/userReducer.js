@@ -11,7 +11,7 @@ import {
 const initialState = {
   authenticated: false,
   loading: false,
-  credentials: {},
+  userCredentials: {},
   likes: [],
   notifications: []
 };
@@ -42,7 +42,7 @@ export default function(state = initialState, action) {
         likes: [
           ...state.likes,
           {
-            userHandle: state.credentials.handle,
+            userHandle: state.userCredentials.handle,
             screamId: action.payload.screamId
           }
         ]

@@ -31,17 +31,17 @@ class EditDetails extends Component {
     open: false
   };
 
-  mapUserDetailsToState = credentials => {
+  mapUserDetailsToState = userCredentials => {
     this.setState({
-      bio: credentials.bio ? credentials.bio : "",
-      website: credentials.website ? credentials.website : "",
-      location: credentials.location ? credentials.location : ""
+      bio: userCredentials.bio ? userCredentials.bio : "",
+      website: userCredentials.website ? userCredentials.website : "",
+      location: userCredentials.location ? userCredentials.location : ""
     });
   };
 
   handleOpen = () => {
     this.setState({ open: true });
-    this.mapUserDetailsToState(this.props.credentials);
+    this.mapUserDetailsToState(this.props.userCredentials);
   };
 
   handleClose = () => {
@@ -49,8 +49,8 @@ class EditDetails extends Component {
   };
 
   componentDidMount() {
-    const { credentials } = this.props;
-    this.mapUserDetailsToState(credentials);
+    const { userCredentials } = this.props;
+    this.mapUserDetailsToState(userCredentials);
   }
 
   handleChange = event => {
@@ -86,7 +86,7 @@ class EditDetails extends Component {
         >
           <DialogTitle>Edit your details</DialogTitle>
           <DialogContent>
-            <from>
+            <form>
               <TextField
                 name="bio"
                 type="text"
@@ -119,7 +119,7 @@ class EditDetails extends Component {
                 onChange={this.handleChange}
                 fullWidth
               />
-            </from>
+            </form>
           </DialogContent>
           <DialogActions>
             <Button onChange={this.handleClose} color="primary">
@@ -141,7 +141,7 @@ EditDetails.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  credentials: state.user.credentials
+  userCredentials: state.user.userCredentials
 });
 
 export default connect(mapStateToProps, { editUserDetails })(
