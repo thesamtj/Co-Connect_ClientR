@@ -64,7 +64,7 @@ export const postScream = (newScream) => (dispatch) => {
       });
     });
 };
-// Like a scream
+// Like a scream and pain
 export const likeScream = (screamId) => (dispatch) => {
   axios
     .get(`/scream/${screamId}/like`)
