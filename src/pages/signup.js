@@ -16,7 +16,7 @@ import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
 
 const styles = (theme) => ({
-    ...theme.general
+  ...theme.general,
 });
 
 class signup extends Component {
@@ -27,7 +27,7 @@ class signup extends Component {
       password: "",
       confirmPassword: "",
       handle: "",
-      errors: {}
+      errors: {},
     };
   }
 
@@ -40,33 +40,34 @@ class signup extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.UI.errors) {
       return { errors: nextProps.UI.errors };
-    }
-    else return null;
+    } else return null;
   }
 
-  
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
-      loading: true
+      loading: true,
     });
     const newUserData = {
       email: this.state.email,
       password: this.state.password,
       confirmPassword: this.state.confirmPassword,
-      handle: this.state.handle
+      handle: this.state.handle,
     };
     this.props.signupUser(newUserData, this.props.history);
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
   render() {
-    const { classes, UI: {loading} } = this.props;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
     const { errors } = this.state;
 
     return (
@@ -142,19 +143,15 @@ class signup extends Component {
               className={classes.button}
               disabled={loading}
             >
-             s
               {loading && (
-                <CircularProgress 
-                  size={30} 
-                  className={classes.progress} 
-                />
+                <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
             <br />
             <small>
               Already have an account ? login <Link to="/login">here</Link>
             </small>
-          </form> 
+          </form>
         </Grid>
         <Grid item sm />
       </Grid>
@@ -166,15 +163,14 @@ signup.propTypes = {
   classes: PropTypes.object.isRequired,
   signupUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  UI: PropTypes.object.isRequired
+  UI: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   user: state.user,
-  UI: state.UI
+  UI: state.UI,
 });
 
-export default connect(
-  mapStateToProps,
-  { signupUser }
-)(withStyles(styles)(signup));
+export default connect(mapStateToProps, { signupUser })(
+  withStyles(styles)(signup)
+);
